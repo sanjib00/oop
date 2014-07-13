@@ -19,7 +19,7 @@
 	$an_employee->id = $_GET['idText'];
 	$an_employee->name =$_GET['nameText'];
 	$an_employee->salary =$_GET['salaryText'];
-	$salary_with_bonus = $an_employee->salary+5000;
+	$salary_with_bonus = $an_employee->get_salary_with_bonus();
 	echo $an_employee->id. ' ' . $an_employee->name. ' ' .$an_employee->salary. ' bonus ' .$salary_with_bonus;
 	
 	/*$id = $_GET['idText'];
