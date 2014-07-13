@@ -1,35 +1,31 @@
-<html>
-
-
 <body>
 
 	<form action= "index.php" method="GET">
-		<input type ='text' name = 'idText'> <br/>
-		<input type ='text' name = 'nameText'> <br/>
-		<input type ='text' name = 'salaryText'> <br/>
-		<input type ="submit" name ='submitButton'>
+		Principle Amount<input type ='text'  name = 'prinAmountText'> <br/>
+		Annual Interest<input type ='text'  name = 'annIntText'> <br/>
+		Time Period<input type ='text'  name = 'timePeriodText'> <br/>
+		<input type ="submit" name ='calculate'>
 	</form>
-<?php
 	
-	require 'employee.php'; //we can also use include
-	if(isset($_GET['idText'])) //without value it does not execute
+	<?php
+	require 'interestcalculator.php'; //we can also use include
+	if(isset($_GET['prinAmountText'])) //without value it does not execute
 	{
 	
-	$an_employee = new Employee();
-	$an_employee->id = $_GET['idText'];
-	$an_employee->name =$_GET['nameText'];
-	$an_employee->salary =$_GET['salaryText'];
-	$salary_with_bonus = $an_employee->get_salary_with_bonus();
-	echo $an_employee->id. ' ' . $an_employee->name. ' ' .$an_employee->salary. ' bonus ' .$salary_with_bonus;
+	$an_input = new InterestCalculator();
+	$an_input->principal_amount = $_GET['prinAmountText'];
+	$an_input->annual_interest_rate =$_GET['annIntText'];
+	$an_input->time_period =$_GET['timePeriodText'];
+	$Result = $an_input->get_total_amount();
+	echo $an_input->principal_amount. ' '.$an_input->annual_interest_rate. '  ' .$an_input->time_period.  'total amount ' .$Result  ;
 	
-	/*$id = $_GET['idText'];
-	$name = $_GET['nameText'];
-	$salaryText = $_GET['salaryText'];
 	
-	echo $id. ' ' . $name . ' ' . $salaryText;*/
 	}
 
 
-?>
+	
+	
+	?>
+
 </body>
 </html>
